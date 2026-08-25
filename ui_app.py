@@ -167,7 +167,7 @@ def extract_patient(p_ans, m_ans):
 def detected_issue(record):
     parts = []
     answers_p = record["answers"].get("physical", {})
-    phys_pred = record["predictions"].get("physical_Random Forest")
+    phys_pred = record["predictions"].get("physical_XGBoost")
     if phys_pred:
         disease = answers_p.get("disease", "Unknown condition")
         tag = "confirmed" if phys_pred == "Positive" else "no disease detected"
@@ -192,7 +192,7 @@ def criticality_of(record):
     plan = record.get("early_warning_plan") or {}
     alert = plan.get("alert_level")
     if not alert:
-        phys_proba = record["probas"].get("physical_Random Forest")
+        phys_proba = record["probas"].get("physical_XGBoost")
         risk = phys_proba[1] if phys_proba else 0
         mental_pred = record["predictions"].get("mental_XGBoost", "")
         if risk >= 0.65 or (mental_pred and mental_pred not in BENIGN_CONDITIONS):
@@ -206,7 +206,7 @@ def criticality_of(record):
 def specialist_suggestion(record):
     cond = (record.get("early_warning_plan") or {}).get(
         "ml_predicted_mental_condition") or record["predictions"].get("mental_XGBoost")
-    phys_pred = record["predictions"].get("physical_Random Forest")
+    phys_pred = record["predictions"].get("physical_XGBoost")
     keywords = []
     if cond == "Sleep Disorders":
         keywords.append("Sleep Medicine")
@@ -241,7 +241,7 @@ def norm_mental(raw):
 
 def recent_rows(latest):
     rows = []
-    proba = latest["probas"].get("physical_Random Forest")
+    proba = latest["probas"].get("physical_XGBoost")
     if proba:
         risk = proba[1]
         status = ("Stable" if risk < 0.35 else
@@ -316,11 +316,11 @@ def history():
     records = list(reversed(load_records()))
     view = []
     for r in records[:30]:
-        phys_proba = r["probas"].get("physical_Random Forest")
+        phys_proba = r["probas"].get("physical_XGBoost")
         view.append({
             "id": r["id"],
             "timestamp": r["timestamp"],
-            "phys": r["predictions"].get("physical_Random Forest", "-"),
+            "phys": r["predictions"].get("physical_XGBoost", "-"),
             "risk": phys_proba[1] if phys_proba else None,
             "mental": r["predictions"].get("mental_XGBoost", "-"),
             "alert": (r.get("early_warning_plan") or {}).get("alert_level"),
@@ -517,7 +517,7 @@ def api_assess():
             nav_scores = navigator.recommend_action(text)
             ml_idx = int(np.argmax(mental_probas["XGBoost"][0]))
             plan = navigator.build_early_warning(
-                physical_risk_prob=float(phys_probas["Random Forest"][0][1]),
+                physical_risk_prob=float(phys_probas["XGBoost"][0][1]),
                 mental_ml_condition=classes[ml_idx],
                 mental_ml_confidence=float(np.max(mental_probas["XGBoost"][0])),
                 text_screening=screening,
@@ -586,7 +586,7 @@ def reports():
         recent.append({
             "timestamp": r["timestamp"][:16].replace("T", " "),
             "name": r.get("patient", {}).get("name", "-"),
-            "phys": r["predictions"].get("physical_Random Forest", "-"),
+            "phys": r["predictions"].get("physical_XGBoost", "-"),
             "mental": r["predictions"].get("mental_XGBoost", "-"),
             "alert": (r.get("early_warning_plan") or {}).get("alert_level"),
             "issue": detected_issue(r),
@@ -631,7 +631,7 @@ def appointment():
 def selfcare():
     latest = latest_record()
     mental_pred = latest["predictions"].get("mental_XGBoost") if latest else None
-    phys_pred = latest["predictions"].get("physical_Random Forest") if latest else None
+    phys_pred = latest["predictions"].get("physical_XGBoost") if latest else None
     return render_template("selfcare.html",
                            mental_pred=mental_pred, phys_pred=phys_pred)
 

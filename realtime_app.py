@@ -47,11 +47,14 @@ def ask_float(prompt, lo, hi):
 
 def load_bundle(tag):
     lin = joblib.load(OUTPUT_DIR / f"{tag}_linear.pkl")
-    rf = joblib.load(OUTPUT_DIR / f"{tag}_rf.pkl")
     booster = xgb.Booster()
     booster.load_model(str(OUTPUT_DIR / f"{tag}_xgboost.json"))
-    return {"Linear Regression": lin, "Random Forest": rf,
-            "XGBoost": booster}
+    models = {"Linear Regression": lin, "XGBoost": booster}
+    rf_path = OUTPUT_DIR / f"{tag}_rf.pkl"
+    if rf_path.exists():
+        rf = joblib.load(rf_path)
+        models["Random Forest"] = rf
+    return models
 
 
 def xgb_proba(booster, X, num_class):
@@ -63,11 +66,13 @@ def xgb_proba(booster, X, num_class):
 
 
 def predict_all(models, X, num_class):
-    return {
+    out = {
         "Linear Regression": models["Linear Regression"].predict_proba(X.values),
-        "Random Forest": models["Random Forest"].predict_proba(X.values),
         "XGBoost": xgb_proba(models["XGBoost"], X, num_class),
     }
+    if "Random Forest" in models:
+        out["Random Forest"] = models["Random Forest"].predict_proba(X.values)
+    return out
 
 
 def encode_physical(ans, features, disease_freq):

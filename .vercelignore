@@ -1,0 +1,36 @@
+# Large model files (>50MB Vercel limit)
+outputs/mental_health_rf.pkl
+
+# Training artifacts not needed at runtime
+outputs/*.png
+outputs/*.csv
+outputs/*.txt
+outputs/*_history.csv
+outputs/realtime_*.json
+outputs/realtime_*.csv
+outputs/ui_*.json
+
+# Training data (only physical needed at runtime)
+archive (1)/
+archive (3)/Psychological_Assessment_Dataset.csv
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
