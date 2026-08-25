@@ -1,0 +1,17 @@
+{
+  "free_text_demo": {
+    "alert_level": "CRITICAL",
+    "combined_risk": 0.8992,
+    "physical_risk_probability": 0.716,
+    "ml_predicted_mental_condition": "Mood Disorders",
+    "ml_prediction_confidence": 0.9992,
+    "text_detected_condition": "stress-related condition",
+    "text_confidence": 0.6139,
+    "text_concern_score": 0.6139,
+    "recommended_specialist": "Psychiatrist / clinical psychologist",
+    "recommended_action": "should start self-care and monitor symptoms",
+    "action_confidence": 0.7929,
+    "navigation_message": "Seek immediate medical attention. Contact emergency services or visit the nearest hospital.",
+    "model_suggested_action": "should start self-care and monitor symptoms"
+  }
+}

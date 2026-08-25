@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Reports{% endblock %}
+{% block content %}
+<section class="assess-page">
+<h1 class="page-title">Reports</h1>
+<p class="subtitle">Patient summary, detected issues, recent check-ups and live model accuracy.</p>
+
+{% if patient %}
+<div class="info-grid">
+  <div class="result-card">
+    <div class="rc-title">Patient</div>
+    <div class="rc-big">{{ patient.name }}</div>
+    <p class="small">Age: {{ patient.age }} &nbsp;&middot;&nbsp; Gender: {{ patient.gender }}</p>
+  </div>
+  <div class="result-card">
+    <div class="rc-title">Detected Issue</div>
+    <div class="rc-text">{{ issue }}</div>
+  </div>
+  <div class="result-card">
+    <div class="rc-title">Criticality</div>
+    <span class="alert-chip chip-{{ alert|lower }}">{{ alert }}</span>
+    <p class="small" style="margin-top:10px">From your most recent assessment.</p>
+  </div>
+  <div class="result-card">
+    <div class="rc-title">Next Step</div>
+    <a class="row-link" href="{{ url_for('appointment') }}">Book based on criticality &rarr;</a>
+  </div>
+</div>
+
+<h2 class="page-subtitle">Recent Check-ups</h2>
+<div class="table-wrap">
+  <table class="metrics-table">
+    <thead><tr><th>When</th><th>Name</th><th>Physical</th><th>Mental</th><th>Alert</th><th>Detected issue</th></tr></thead>
+    <tbody>
+      {% for r in recent %}
+      <tr>
+        <td>{{ r.timestamp }}</td>
+        <td>{{ r.name }}</td>
+        <td>{{ r.phys }}</td>
+        <td>{{ r.mental }}</td>
+        <td>{% if r.alert %}<span class="alert-chip chip-{{ r.alert|lower }}">{{ r.alert }}</span>{% else %}&mdash;{% endif %}</td>
+        <td>{{ r.issue }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<h2 class="page-subtitle">Model Accuracy (live data)</h2>
+<div class="table-wrap">
+  <table class="metrics-table">
+    <thead><tr><th>Dataset</th><th>Model</th><th>Accuracy</th><th>Loss</th><th>Precision (macro)</th></tr></thead>
+    <tbody>
+      {% for row in rows %}
+      <tr><td>{{ row.dataset }}</td><td>{{ row.model }}</td><td>{{ row.accuracy }}</td><td>{{ row.loss }}</td><td>{{ row.precision_macro }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<p class="small">Computed over {{ count }} stored assessment(s).</p>
+
+{% else %}
+<div class="banner banner-moderate">No reports yet. Complete a check-in from the dashboard first.</div>
+<a class="cta-dark btn-gap" href="{{ url_for('dash') }}">GO TO DASHBOARD</a>
+{% endif %}
+</section>
+
+{% set page = 'history' %}
+{% include '_footnav.html' %}
+{% endblock %}

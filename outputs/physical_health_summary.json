@@ -1,0 +1,52 @@
+{
+  "dataset": "physical_health",
+  "classes": [
+    "0",
+    "1"
+  ],
+  "features": [
+    "Fever",
+    "Cough",
+    "Fatigue",
+    "DifficultyBreathing",
+    "Age",
+    "Gender",
+    "BloodPressure",
+    "Cholesterol",
+    "DiseaseCode"
+  ],
+  "feature_count": 9,
+  "train_samples": 279,
+  "test_samples": 70,
+  "epochs": 50,
+  "final_metrics": [
+    {
+      "model": "Linear Regression",
+      "accuracy": 0.6857142857142857,
+      "loss": 0.6588744163534852,
+      "precision_macro": 0.684863523573201,
+      "precision_weighted": 0.6852889046437433,
+      "recall_macro": 0.683046683046683,
+      "f1_macro": 0.6833881578947368
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 0.8857142857142857,
+      "loss": 0.413465500774007,
+      "precision_macro": 0.8853398853398853,
+      "precision_weighted": 0.8857142857142857,
+      "recall_macro": 0.8853398853398853,
+      "f1_macro": 0.8853398853398853
+    },
+    {
+      "model": "XGBoost",
+      "accuracy": 0.8285714285714286,
+      "loss": 0.5755931735038757,
+      "precision_macro": 0.8285714285714285,
+      "precision_weighted": 0.830204081632653,
+      "recall_macro": 0.8296478296478297,
+      "f1_macro": 0.8284313725490196
+    }
+  ],
+  "best_model": "Random Forest"
+}

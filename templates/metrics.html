@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Live Metrics{% endblock %}
+{% block content %}
+<h1 class="page-title">Live Model Metrics</h1>
+<p class="subtitle">Accuracy, log-loss and precision computed on
+   <b>{{ count }}</b> real-time assessment{{ '' if count == 1 else 's' }} collected through this app.</p>
+
+{% if rows %}
+<div class="table-wrap">
+  <table class="metrics-table">
+    <thead>
+      <tr>
+        <th>Dataset</th><th>Model</th><th>Accuracy</th><th>Loss</th><th>Precision (macro)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr>
+        <td>{{ row.dataset }}</td>
+        <td>{{ row.model }}</td>
+        <td>{{ row.accuracy }}</td>
+        <td>{{ row.loss }}</td>
+        <td>{{ row.precision_macro }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<p class="small">Metrics are more reliable as more assessments are collected.</p>
+{% else %}
+<div class="banner banner-moderate">
+  No live records yet. Complete an assessment first.
+</div>
+<a class="btn-primary btn-link" href="{{ url_for('assess') }}">START ASSESSMENT</a>
+{% endif %}
+{% endblock %}

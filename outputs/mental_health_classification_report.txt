@@ -1,0 +1,15 @@
+                                precision    recall  f1-score   support
+
+         Cognitive Impairments       1.00      1.00      1.00        43
+         Coping and Resilience       1.00      1.00      1.00         8
+              Eating Disorders       1.00      1.00      1.00        90
+         General Mental Health       1.00      1.00      1.00        32
+  Generalized Anxiety Disorder       1.00      1.00      1.00       275
+                Mood Disorders       1.00      1.00      1.00       541
+Post-Traumatic Stress Disorder       1.00      1.00      1.00         4
+               Sleep Disorders       1.00      1.00      1.00       721
+     Stress-Related Conditions       1.00      1.00      1.00       187
+
+                      accuracy                           1.00      1901
+                     macro avg       1.00      1.00      1.00      1901
+                  weighted avg       1.00      1.00      1.00      1901

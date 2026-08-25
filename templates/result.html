@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Results{% endblock %}
+{% block content %}
+<section class="assess-page">
+<h1 class="page-title">Your Results</h1>
+<p class="subtitle">Assessment from {{ r.timestamp }}</p>
+
+{% if plan %}
+<div class="banner banner-{{ plan.alert_level|lower }}">
+  <div class="alert-level">{{ plan.alert_level }} ALERT</div>
+  <div class="alert-msg">{{ plan.navigation_message }}</div>
+</div>
+
+<section class="plan-grid">
+  <div class="result-card">
+    <div class="rc-title">Combined Risk</div>
+    <div class="rc-big">{{ plan.combined_risk }}</div>
+    <div class="bar"><span style="width: {{ (plan.combined_risk * 100)|round(1) }}%"></span></div>
+  </div>
+  {% if plan.physical_risk_probability is not none %}
+  <div class="result-card">
+    <div class="rc-title">Physical Risk</div>
+    <div class="rc-big">{{ plan.physical_risk_probability }}</div>
+    <div class="bar"><span style="width: {{ (plan.physical_risk_probability * 100)|round(1) }}%"></span></div>
+  </div>
+  {% endif %}
+  <div class="result-card">
+    <div class="rc-title">Recommended Specialist</div>
+    <div class="rc-text">{{ plan.recommended_specialist }}</div>
+  </div>
+  {% if screening_top %}
+  <div class="result-card">
+    <div class="rc-title">AI Text Screening</div>
+    <div class="rc-text">{{ screening_top.condition }}</div>
+    <div class="bar"><span style="width: {{ screening_top.confidence }}%"></span></div>
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+
+<h2 class="page-subtitle">Model Predictions</h2>
+<section class="model-grid">
+  {% for m in models %}
+  <div class="model-card">
+    <div class="mc-model">{{ m.model }}</div>
+    <div class="mc-task">{{ m.task }}</div>
+    <div class="mc-prediction">{{ m.prediction }}</div>
+    <div class="mc-conf">{{ m.confidence }}% confidence</div>
+    <div class="bar"><span style="width: {{ m.bar }}%"></span></div>
+  </div>
+  {% endfor %}
+</section>
+
+<div class="submit-area">
+  <a class="btn-primary btn-link" href="{{ url_for('dash') }}">BACK TO DASHBOARD</a>
+  <a class="btn-secondary btn-link" href="{{ url_for('metrics') }}">VIEW LIVE METRICS</a>
+</div>
+
+{% set page = 'checkin' %}
+{% include '_footnav.html' %}
+</section>
+{% endblock %}

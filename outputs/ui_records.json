@@ -1,0 +1,534 @@
+[
+  {
+    "id": "20260824203612765126",
+    "timestamp": "2026-08-24T20:36:12",
+    "answers": {
+      "physical": {
+        "gender": "Female",
+        "fever": "False",
+        "cough": "False",
+        "fatigue": "True",
+        "breathing": "False",
+        "bp": "Normal",
+        "cholesterol": "Normal",
+        "outcome": "Negative",
+        "disease": "headache",
+        "age": "20.0"
+      },
+      "mental": {
+        "mood": "Anxiety",
+        "anxiety": "Moderately anxious",
+        "trigger": [
+          "Family issues",
+          "Social situations"
+        ],
+        "sleep": "Difficulty staying asleep",
+        "appetite": "Loss of appetite",
+        "lack_interest": "Frequently",
+        "enjoyable": "Rarely",
+        "phys_symptoms": "Yes, occasionally",
+        "concentration": "Frequently",
+        "coping": "Mindfulness or meditation",
+        "condition": "Generalized Anxiety Disorder"
+      }
+    },
+    "predictions": {
+      "physical_Linear Regression": "Negative",
+      "physical_Random Forest": "Positive",
+      "physical_XGBoost": "Negative",
+      "mental_Linear Regression": "Sleep Disorders",
+      "mental_Random Forest": "Sleep Disorders",
+      "mental_XGBoost": "Sleep Disorders"
+    },
+    "probas": {
+      "physical_Linear Regression": [
+        0.510559,
+        0.489441
+      ],
+      "physical_Random Forest": [
+        0.440667,
+        0.559333
+      ],
+      "physical_XGBoost": [
+        0.661975,
+        0.338025
+      ],
+      "mental_Linear Regression": [
+        0.103285,
+        0.10621,
+        0.10199,
+        0.111335,
+        0.113416,
+        0.106235,
+        0.106238,
+        0.152775,
+        0.098516
+      ],
+      "mental_Random Forest": [
+        0.004,
+        0.0,
+        0.036,
+        0.0,
+        0.036,
+        0.044,
+        0.0,
+        0.848,
+        0.032
+      ],
+      "mental_XGBoost": [
+        2e-06,
+        1e-06,
+        1.1e-05,
+        1e-06,
+        3e-06,
+        3e-06,
+        0.0,
+        0.999974,
+        5e-06
+      ]
+    },
+    "true_labels": {
+      "physical": "Negative",
+      "mental": "Generalized Anxiety Disorder"
+    },
+    "results_page": {
+      "models": [
+        {
+          "model": "Linear Regression",
+          "task": "Physical outcome",
+          "prediction": "Negative",
+          "confidence": 51.1,
+          "bar": 51.1
+        },
+        {
+          "model": "Random Forest",
+          "task": "Physical outcome",
+          "prediction": "Positive",
+          "confidence": 55.9,
+          "bar": 55.9
+        },
+        {
+          "model": "XGBoost",
+          "task": "Physical outcome",
+          "prediction": "Negative",
+          "confidence": 66.2,
+          "bar": 66.2
+        },
+        {
+          "model": "Linear Regression",
+          "task": "Mental condition",
+          "prediction": "Sleep Disorders",
+          "confidence": 15.3,
+          "bar": 15.3
+        },
+        {
+          "model": "Random Forest",
+          "task": "Mental condition",
+          "prediction": "Sleep Disorders",
+          "confidence": 84.8,
+          "bar": 84.8
+        },
+        {
+          "model": "XGBoost",
+          "task": "Mental condition",
+          "prediction": "Sleep Disorders",
+          "confidence": 100.0,
+          "bar": 100.0
+        }
+      ],
+      "screening_top": {
+        "condition": "stress-related condition",
+        "confidence": 50.5
+      },
+      "plan": {
+        "alert_level": "CRITICAL",
+        "combined_risk": 1.0,
+        "physical_risk_probability": 0.5593,
+        "ml_predicted_mental_condition": "Sleep Disorders",
+        "ml_prediction_confidence": 1.0,
+        "text_detected_condition": "stress-related condition",
+        "text_confidence": 0.5053,
+        "text_concern_score": 0.5018,
+        "recommended_specialist": "Sleep medicine specialist + mental health counselor",
+        "recommended_action": "should start self-care and monitor symptoms",
+        "action_confidence": 0.9462,
+        "navigation_message": "Seek immediate medical attention. Contact emergency services or visit the nearest hospital.",
+        "model_suggested_action": "should start self-care and monitor symptoms"
+      }
+    },
+    "early_warning_plan": {
+      "alert_level": "CRITICAL",
+      "combined_risk": 1.0,
+      "physical_risk_probability": 0.5593,
+      "ml_predicted_mental_condition": "Sleep Disorders",
+      "ml_prediction_confidence": 1.0,
+      "text_detected_condition": "stress-related condition",
+      "text_confidence": 0.5053,
+      "text_concern_score": 0.5018,
+      "recommended_specialist": "Sleep medicine specialist + mental health counselor",
+      "recommended_action": "should start self-care and monitor symptoms",
+      "action_confidence": 0.9462,
+      "navigation_message": "Seek immediate medical attention. Contact emergency services or visit the nearest hospital.",
+      "model_suggested_action": "should start self-care and monitor symptoms"
+    }
+  },
+  {
+    "id": "20260825102512563316",
+    "timestamp": "2026-08-25T10:25:12",
+    "answers": {
+      "physical": {
+        "fatigue": "True",
+        "cough": "False",
+        "disease": "Diabetes",
+        "bp": "High",
+        "fever": "True",
+        "cholesterol": "High",
+        "gender": "Male",
+        "breathing": "False",
+        "outcome": "Positive",
+        "age": "52.0"
+      }
+    },
+    "predictions": {
+      "physical_Linear Regression": "Positive",
+      "physical_Random Forest": "Positive",
+      "physical_XGBoost": "Negative"
+    },
+    "probas": {
+      "physical_Linear Regression": [
+        0.447418,
+        0.552582
+      ],
+      "physical_Random Forest": [
+        0.408,
+        0.592
+      ],
+      "physical_XGBoost": [
+        0.583952,
+        0.416048
+      ]
+    },
+    "true_labels": {
+      "physical": "Positive"
+    },
+    "results_page": {
+      "models": [
+        {
+          "model": "Linear Regression",
+          "task": "Physical outcome",
+          "prediction": "Positive",
+          "confidence": 55.3,
+          "bar": 55.3
+        },
+        {
+          "model": "Random Forest",
+          "task": "Physical outcome",
+          "prediction": "Positive",
+          "confidence": 59.2,
+          "bar": 59.2
+        },
+        {
+          "model": "XGBoost",
+          "task": "Physical outcome",
+          "prediction": "Negative",
+          "confidence": 58.4,
+          "bar": 58.4
+        }
+      ]
+    }
+  },
+  {
+    "id": "20260825102513228534",
+    "timestamp": "2026-08-25T10:25:13",
+    "answers": {
+      "mental": {
+        "sleep": "Interrupted",
+        "appetite": "Loss of appetite",
+        "trigger": [
+          "Work-related stress",
+          "Family issues"
+        ],
+        "enjoyable": "Never",
+        "anxiety": "Very anxious",
+        "coping": "No coping strategies",
+        "lack_interest": "Always",
+        "condition": "Mood Disorders",
+        "phys_symptoms": "Yes, frequently",
+        "mood": "Extreme sadness",
+        "concentration": "Constantly"
+      }
+    },
+    "predictions": {
+      "mental_Linear Regression": "Mood Disorders",
+      "mental_Random Forest": "Mood Disorders",
+      "mental_XGBoost": "Mood Disorders"
+    },
+    "probas": {
+      "mental_Linear Regression": [
+        0.105849,
+        0.103124,
+        0.100455,
+        0.096834,
+        0.118596,
+        0.150785,
+        0.103108,
+        0.117683,
+        0.103565
+      ],
+      "mental_Random Forest": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.072,
+        0.896,
+        0.0,
+        0.024,
+        0.008
+      ],
+      "mental_XGBoost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.001112,
+        0.998878,
+        0.0,
+        5e-06,
+        4e-06
+      ]
+    },
+    "true_labels": {
+      "mental": "Mood Disorders"
+    },
+    "results_page": {
+      "models": [
+        {
+          "model": "Linear Regression",
+          "task": "Mental condition",
+          "prediction": "Mood Disorders",
+          "confidence": 15.1,
+          "bar": 15.1
+        },
+        {
+          "model": "Random Forest",
+          "task": "Mental condition",
+          "prediction": "Mood Disorders",
+          "confidence": 89.6,
+          "bar": 89.6
+        },
+        {
+          "model": "XGBoost",
+          "task": "Mental condition",
+          "prediction": "Mood Disorders",
+          "confidence": 99.9,
+          "bar": 99.9
+        }
+      ],
+      "plan": {
+        "alert_level": "CRITICAL",
+        "combined_risk": 0.9989,
+        "physical_risk_probability": null,
+        "ml_predicted_mental_condition": "Mood Disorders",
+        "ml_prediction_confidence": 0.9989,
+        "text_detected_condition": "stress-related condition",
+        "text_confidence": 0.5291,
+        "text_concern_score": 0.5289,
+        "recommended_specialist": "Psychiatrist / clinical psychologist",
+        "recommended_action": "should start self-care and monitor symptoms",
+        "action_confidence": 0.7594,
+        "navigation_message": "Seek immediate medical attention. Contact emergency services or visit the nearest hospital.",
+        "model_suggested_action": "should start self-care and monitor symptoms"
+      },
+      "screening_top": {
+        "condition": "stress-related condition",
+        "confidence": 52.9
+      }
+    },
+    "early_warning_plan": {
+      "alert_level": "CRITICAL",
+      "combined_risk": 0.9989,
+      "physical_risk_probability": null,
+      "ml_predicted_mental_condition": "Mood Disorders",
+      "ml_prediction_confidence": 0.9989,
+      "text_detected_condition": "stress-related condition",
+      "text_confidence": 0.5291,
+      "text_concern_score": 0.5289,
+      "recommended_specialist": "Psychiatrist / clinical psychologist",
+      "recommended_action": "should start self-care and monitor symptoms",
+      "action_confidence": 0.7594,
+      "navigation_message": "Seek immediate medical attention. Contact emergency services or visit the nearest hospital.",
+      "model_suggested_action": "should start self-care and monitor symptoms"
+    }
+  },
+  {
+    "id": "20260825102525415898",
+    "timestamp": "2026-08-25T10:25:25",
+    "answers": {
+      "physical": {
+        "fatigue": "True",
+        "cough": "False",
+        "disease": "Diabetes",
+        "bp": "High",
+        "fever": "True",
+        "cholesterol": "High",
+        "gender": "Male",
+        "breathing": "False",
+        "outcome": "Positive",
+        "age": "52.0"
+      },
+      "mental": {
+        "sleep": "Interrupted",
+        "appetite": "Loss of appetite",
+        "trigger": [
+          "Work-related stress",
+          "Family issues"
+        ],
+        "enjoyable": "Never",
+        "anxiety": "Very anxious",
+        "coping": "No coping strategies",
+        "lack_interest": "Always",
+        "condition": "Mood Disorders",
+        "phys_symptoms": "Yes, frequently",
+        "mood": "Extreme sadness",
+        "concentration": "Constantly"
+      }
+    },
+    "predictions": {
+      "physical_Linear Regression": "Positive",
+      "physical_Random Forest": "Positive",
+      "physical_XGBoost": "Negative",
+      "mental_Linear Regression": "Mood Disorders",
+      "mental_Random Forest": "Mood Disorders",
+      "mental_XGBoost": "Mood Disorders"
+    },
+    "probas": {
+      "physical_Linear Regression": [
+        0.447418,
+        0.552582
+      ],
+      "physical_Random Forest": [
+        0.408,
+        0.592
+      ],
+      "physical_XGBoost": [
+        0.583952,
+        0.416048
+      ],
+      "mental_Linear Regression": [
+        0.105849,
+        0.103124,
+        0.100455,
+        0.096834,
+        0.118596,
+        0.150785,
+        0.103108,
+        0.117683,
+        0.103565
+      ],
+      "mental_Random Forest": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.072,
+        0.896,
+        0.0,
+        0.024,
+        0.008
+      ],
+      "mental_XGBoost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.001112,
+        0.998878,
+        0.0,
+        5e-06,
+        4e-06
+      ]
+    },
+    "true_labels": {},
+    "results_page": {
+      "models": [
+        {
+          "model": "Linear Regression",
+          "task": "Physical outcome",
+          "prediction": "Positive",
+          "confidence": 55.3,
+          "bar": 55.3
+        },
+        {
+          "model": "Random Forest",
+          "task": "Physical outcome",
+          "prediction": "Positive",
+          "confidence": 59.2,
+          "bar": 59.2
+        },
+        {
+          "model": "XGBoost",
+          "task": "Physical outcome",
+          "prediction": "Negative",
+          "confidence": 58.4,
+          "bar": 58.4
+        },
+        {
+          "model": "Linear Regression",
+          "task": "Mental condition",
+          "prediction": "Mood Disorders",
+          "confidence": 15.1,
+          "bar": 15.1
+        },
+        {
+          "model": "Random Forest",
+          "task": "Mental condition",
+          "prediction": "Mood Disorders",
+          "confidence": 89.6,
+          "bar": 89.6
+        },
+        {
+          "model": "XGBoost",
+          "task": "Mental condition",
+          "prediction": "Mood Disorders",
+          "confidence": 99.9,
+          "bar": 99.9
+        }
+      ],
+      "plan": {
+        "alert_level": "CRITICAL",
+        "combined_risk": 0.9989,
+        "physical_risk_probability": 0.592,
+        "ml_predicted_mental_condition": "Mood Disorders",
+        "ml_prediction_confidence": 0.9989,
+        "text_detected_condition": "stress-related condition",
+        "text_confidence": 0.5291,
+        "text_concern_score": 0.5289,
+        "recommended_specialist": "Psychiatrist / clinical psychologist",
+        "recommended_action": "should start self-care and monitor symptoms",
+        "action_confidence": 0.7594,
+        "navigation_message": "Seek immediate medical attention. Contact emergency services or visit the nearest hospital.",
+        "model_suggested_action": "should start self-care and monitor symptoms"
+      },
+      "screening_top": {
+        "condition": "stress-related condition",
+        "confidence": 52.9
+      }
+    },
+    "early_warning_plan": {
+      "alert_level": "CRITICAL",
+      "combined_risk": 0.9989,
+      "physical_risk_probability": 0.592,
+      "ml_predicted_mental_condition": "Mood Disorders",
+      "ml_prediction_confidence": 0.9989,
+      "text_detected_condition": "stress-related condition",
+      "text_confidence": 0.5291,
+      "text_concern_score": 0.5289,
+      "recommended_specialist": "Psychiatrist / clinical psychologist",
+      "recommended_action": "should start self-care and monitor symptoms",
+      "action_confidence": 0.7594,
+      "navigation_message": "Seek immediate medical attention. Contact emergency services or visit the nearest hospital.",
+      "model_suggested_action": "should start self-care and monitor symptoms"
+    }
+  }
+]

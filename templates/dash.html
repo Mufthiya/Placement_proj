@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<section class="dash">
+
+  <div class="dash-third dash-hero">
+    <p class="eyebrow">DASHBOARD</p>
+    <h1>Welcome<span class="dot-end">.</span></h1>
+    <h2>How are you feeling today?</h2>
+
+    <div class="feel-box">
+      <div class="feel-head">&#10022; &nbsp;Tell us what you're experiencing</div>
+      <textarea id="feelText" rows="4"
+        placeholder='&quot;I&#39;ve been feeling tired and...&quot;'></textarea>
+      <div class="feel-actions">
+        <button class="btn-mini" id="shareBtn">SHARE FEELING</button>
+        <span class="feel-note">Read by the Life language model, stored only on this device.</span>
+      </div>
+      <div id="feelResult" class="feel-result hidden"></div>
+    </div>
+  </div>
+
+  <div class="dash-third dash-split">
+    <a class="segment" href="{{ url_for('checkin_physical') }}">
+      <span class="seg-kicker">SEGMENT 01</span>
+      <span class="seg-title">Physical Check-in</span>
+      <span class="seg-desc">Symptoms, vitals and history scored by three models.</span>
+      <span class="seg-arrow">&rarr;</span>
+    </a>
+    <a class="segment segment-alt" href="{{ url_for('checkin_mental') }}">
+      <span class="seg-kicker">SEGMENT 02</span>
+      <span class="seg-title">Mental Wellbeing</span>
+      <span class="seg-desc">Mood, sleep, focus and coping read in context.</span>
+      <span class="seg-arrow">&rarr;</span>
+    </a>
+  </div>
+
+  <div class="dash-third dash-recent">
+    <div class="recent-head">
+      <h2>Your recent health</h2>
+      <span class="recent-sub">based on assessment results</span>
+    </div>
+    {% if has_data %}
+    {% for row in recent %}
+    <div class="recent-row">
+      <span class="recent-area">{{ row.area }}</span>
+      <span class="recent-status">
+        <i class="status-dot dot-{{ row.status|lower }}"></i>{{ row.status }}
+      </span>
+      <span class="recent-detail">{{ row.detail }}</span>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="banner banner-moderate">No assessments yet. Start with a check-in above and this panel will fill up.</div>
+    {% endif %}
+  </div>
+
+</section>
+
+{% set page = 'dash' %}
+{% include '_footnav.html' %}
+{% endblock %}
+
+{% block scripts %}
+<script>window.PAGE = "dash";</script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<section class="panel panel-welcome">
+  <div class="welcome-grid">
+    <div class="head-wrap">
+      <svg class="head-art" viewBox="0 0 220 240" fill="none">
+        <path d="M78 232 q32 -16 64 0" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+        <path d="M110 46 c-30 0 -47 21 -47 49 c0 19 9 32 17 41 l0 20 c0 9 11 13 30 13 s30 -4 30 -13 l0 -20 c8 -9 17 -22 17 -41 c0 -28 -17 -49 -47 -49 z"
+              stroke="#111111" stroke-width="3.5"/>
+        <circle cx="95" cy="100" r="3.2" fill="#111111"/>
+        <circle cx="125" cy="100" r="3.2" fill="#111111"/>
+        <path d="M97 126 q13 9 26 0" stroke="#111111" stroke-width="2.5" stroke-linecap="round"/>
+        <path class="scribble" d="M110 40 c-8 -14 8 -22 0 -34 M124 38 c10 -12 -2 -20 8 -30 M96 40 c-12 -10 0 -22 -12 -28 M136 44 c14 -8 26 -2 32 -12 M82 46 c-16 -6 -26 2 -34 -8 M146 52 c16 -4 24 4 34 -2"/>
+      </svg>
+
+      <div class="chip chip-a">
+        <b>Anxiety</b>
+        <span>Track triggers, sleep &amp; mood swings early.</span>
+      </div>
+      <div class="chip chip-b">
+        <b>Blood Pressure</b>
+        <span>Symptoms mapped against vitals &amp; history.</span>
+      </div>
+      <div class="chip chip-c">
+        <b>Suggestions</b>
+        <span>Clear next steps: specialist, urgency, self-care.</span>
+      </div>
+    </div>
+
+    <div class="welcome-copy">
+      <p class="eyebrow">PERSONALIZED EARLY-WARNING SYSTEM</p>
+      <h1>Welcome to Life</h1>
+      <p class="lead">
+        Life connects your physical signals with your mental well-being.
+        Answer a short assessment and the model watches for concerning
+        patterns, so you can act sooner, not later.
+      </p>
+      <a class="cta-dark" href="{{ url_for('dash') }}">TAKE ASSESSMENT</a>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-how">
+  <p class="eyebrow">HOW THIS WORKS</p>
+  <h2>Three quiet steps. No jargon.</h2>
+  <div class="steps">
+    <div class="step">
+      <span class="step-no">01</span>
+      <h3>Tell Life how you feel</h3>
+      <p>A few taps about your body and mind. Everything stays on this machine.</p>
+    </div>
+    <div class="step">
+      <span class="step-no">02</span>
+      <h3>Models look for patterns</h3>
+      <p>Linear Regression, Random Forest and XGBoost score your risk; BART-MNLI reads your words.</p>
+    </div>
+    <div class="step">
+      <span class="step-no">03</span>
+      <h3>You get a clear direction</h3>
+      <p>An honest alert level, the right specialist, and what to do today.</p>
+    </div>
+  </div>
+  <p class="swipe-hint">Swipe down to meet the doctors &rarr;</p>
+</section>
+
+<section class="panel panel-doctors">
+  <p class="eyebrow">CONSULT WITH CONFIDENCE</p>
+  <h2>Doctors patients ask for by name</h2>
+  <div class="doctor-list">
+    <div class="doctor-row">
+      <span class="doc-name">Dr. Aisha Verma</span>
+      <span class="doc-spec">Psychiatry &middot; Mood &amp; Anxiety Disorders</span>
+      <span class="doc-tag">Mon&ndash;Fri</span>
+    </div>
+    <div class="doctor-row">
+      <span class="doc-name">Dr. Daniel Okafor</span>
+      <span class="doc-spec">Sleep Medicine &middot; Sleep Disorder Clinic</span>
+      <span class="doc-tag">Tue&ndash;Sat</span>
+    </div>
+    <div class="doctor-row">
+      <span class="doc-name">Dr. Emily Carter</span>
+      <span class="doc-spec">Clinical Psychology &middot; CBT &amp; Trauma Care</span>
+      <span class="doc-tag">Mon&ndash;Thu</span>
+    </div>
+    <div class="doctor-row">
+      <span class="doc-name">Dr. Raj Menon</span>
+      <span class="doc-spec">Cardiology &middot; Blood Pressure &amp; Metabolic Health</span>
+      <span class="doc-tag">Wed&ndash;Sun</span>
+    </div>
+    <div class="doctor-row">
+      <span class="doc-name">Dr. Sofia Marino</span>
+      <span class="doc-spec">Nutrition Science &middot; Eating Disorder Support</span>
+      <span class="doc-tag">Tue&ndash;Fri</span>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-tech">
+  <p class="eyebrow light">UNDER THE HOOD</p>
+  <h2>Algorithms that power Life</h2>
+  <div class="algo-grid">
+    <div class="algo">
+      <h3>Linear Regression</h3>
+      <p>A fast baseline that maps symptoms to a continuous risk score.</p>
+    </div>
+    <div class="algo">
+      <h3>Random Forest</h3>
+      <p>Hundreds of decision trees voting together for stable predictions.</p>
+    </div>
+    <div class="algo">
+      <h3>XGBoost</h3>
+      <p>Boosted trees that catch subtle interactions between symptoms.</p>
+    </div>
+    <div class="algo">
+      <h3>BART-large-MNLI</h3>
+      <p>A language model that understands free-text feelings and routes you to care.</p>
+    </div>
+  </div>
+  <div class="tech-links">
+    <a class="cta-light" href="{{ url_for('dash') }}">Take Assessment</a>
+    <a class="cta-outline" href="{{ url_for('reports') }}">Reports</a>
+    <a class="cta-outline" href="{{ url_for('appointment') }}">Appointment</a>
+    <a class="cta-outline" href="{{ url_for('selfcare') }}">Selfcare</a>
+  </div>
+</section>
+
+{% endblock %}

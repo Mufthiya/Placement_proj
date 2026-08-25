@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}MyInfo{% endblock %}
+{% block content %}
+<section class="assess-page">
+<h1 class="page-title">MyInfo</h1>
+<p class="subtitle">Local profile. Life stores everything on this device only.</p>
+
+<div class="info-grid">
+  <div class="result-card" id="authInfo">
+    <div class="rc-title">Signed in as</div>
+    <div class="rc-text">Guest (not signed in)</div>
+    <p class="small"><a class="row-link" href="{{ url_for('login') }}">Sign in / Create account &rarr;</a></p>
+  </div>
+  <div class="result-card">
+    <div class="rc-title">Profile</div>
+    <div class="rc-text">Name: <span id="my_name">Guest User</span></div>
+    <p class="small">No cloud tracking of health data; only your login profile lives in Firestore.</p>
+  </div>
+  <div class="result-card">
+    <div class="rc-title">Assessments stored</div>
+    <div class="rc-big">{{ total }}</div>
+    <p class="small">{{ phys_done }} physical &middot; {{ mental_done }} mental submissions</p>
+  </div>
+  <div class="result-card">
+    <div class="rc-title">Model stack</div>
+    <div class="rc-text">Linear Regression &middot; Random Forest &middot; XGBoost</div>
+    <p class="small">Language screening: facebook/bart-large-mnli</p>
+  </div>
+  <div class="result-card">
+    <div class="rc-title">Data location</div>
+    <div class="rc-text">outputs/ui_records.json</div>
+    <p class="small">Delete this file to erase your local history.</p>
+  </div>
+</div>
+
+<a class="cta-dark btn-gap" href="{{ url_for('dash') }}">BACK TO DASHBOARD</a>
+</section>
+
+{% set page = 'myinfo' %}
+{% include '_footnav.html' %}
+{% endblock %}

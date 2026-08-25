@@ -1,0 +1,83 @@
+{
+  "dataset": "mental_health",
+  "classes": [
+    "Cognitive Impairments",
+    "Coping and Resilience",
+    "Eating Disorders",
+    "General Mental Health",
+    "Generalized Anxiety Disorder",
+    "Mood Disorders",
+    "Post-Traumatic Stress Disorder",
+    "Sleep Disorders",
+    "Stress-Related Conditions"
+  ],
+  "features": [
+    "AnxietyScore",
+    "LackInterestScore",
+    "EnjoyableScore",
+    "ConcentrationScore",
+    "PhysSymptomsScore",
+    "Mood_Anxiety",
+    "Mood_Extreme sadness",
+    "Mood_Fluctuating",
+    "Mood_Happiness",
+    "Mood_Irritability",
+    "Mood_Mild sadness",
+    "Mood_Stable",
+    "Triggers_Family issues",
+    "Triggers_Financial concerns",
+    "Triggers_Health concerns",
+    "Triggers_None of the above",
+    "Triggers_Social situations",
+    "Triggers_Work-related stress",
+    "Sleep_Difficulty staying asleep",
+    "Sleep_Early morning waking",
+    "Sleep_Interrupted",
+    "Sleep_None of the above",
+    "Sleep_Restful",
+    "Sleep_Trouble falling asleep",
+    "Appetite_Fluctuates daily",
+    "Appetite_Increased cravings",
+    "Appetite_Loss of appetite",
+    "Appetite_No change",
+    "Coping_Journaling or writing",
+    "Coping_Mindfulness or meditation",
+    "Coping_No coping strategies",
+    "Coping_Physical activity",
+    "Coping_Social engagement"
+  ],
+  "feature_count": 33,
+  "train_samples": 7603,
+  "test_samples": 1901,
+  "epochs": 50,
+  "final_metrics": [
+    {
+      "model": "Linear Regression",
+      "accuracy": 0.8158863755917938,
+      "loss": 1.9664640562407214,
+      "precision_macro": 0.46974791112956815,
+      "precision_weighted": 0.7766163582310188,
+      "recall_macro": 0.4309841494866718,
+      "f1_macro": 0.42280266670718086
+    },
+    {
+      "model": "Random Forest",
+      "accuracy": 0.9752761704366123,
+      "loss": 0.303655589523451,
+      "precision_macro": 0.9722275721870131,
+      "precision_weighted": 0.9770276574060319,
+      "recall_macro": 0.959315852701775,
+      "f1_macro": 0.9634178709201477
+    },
+    {
+      "model": "XGBoost",
+      "accuracy": 1.0,
+      "loss": 0.0012731655733659863,
+      "precision_macro": 1.0,
+      "precision_weighted": 1.0,
+      "recall_macro": 1.0,
+      "f1_macro": 1.0
+    }
+  ],
+  "best_model": "XGBoost"
+}

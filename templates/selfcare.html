@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Selfcare{% endblock %}
+{% block content %}
+
+<section class="panel panel-selfcare">
+  <p class="eyebrow">SEGMENT 01 &middot; MIND</p>
+  <h2>Handling anxiety &amp; depression</h2>
+  {% if mental_pred and mental_pred not in ['General Mental Health', 'Coping and Resilience'] %}
+  <div class="banner banner-moderate">Your last assessment noted: <b>{{ mental_pred }}</b>. The steps below are a starting point, not a replacement for professional care.</div>
+  {% endif %}
+  <div class="care-grid">
+    <div class="care-col">
+      <h3>When anxiety spikes</h3>
+      <ul>
+        <li><b>4-7-8 breathing:</b> inhale 4s, hold 7s, exhale 8s. Repeat four rounds.</li>
+        <li><b>5-4-3-2-1 grounding:</b> name 5 things you see, 4 you feel, 3 you hear, 2 you smell, 1 you taste.</li>
+        <li><b>Set a worry window:</b> 15 scheduled minutes a day to worry on paper; outside it, note and postpone.</li>
+        <li><b>Cut stimulants after 2pm:</b> caffeine and nicotine mimic and amplify anxiety.</li>
+      </ul>
+    </div>
+    <div class="care-col">
+      <h3>When depression pulls you down</h3>
+      <ul>
+        <li><b>Shrink the task:</b> not "clean the house", just "put one dish away". Momentum beats motivation.</li>
+        <li><b>Sunlight + movement:</b> a 10-minute morning walk is clinically meaningful.</li>
+        <li><b>One human contact daily:</b> message or call someone, even briefly.</li>
+        <li><b>Protect sleep:</b> fixed wake time matters more than bed time.</li>
+        <li>If heaviness lasts over two weeks or you have thoughts of self-harm, contact a professional or a helpline today - Life's Appointment page can route you fast.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="panel panel-selfcare-alt">
+  <p class="eyebrow">SEGMENT 02 &middot; BODY</p>
+  <h2>Maintaining physical health</h2>
+  {% if phys_pred == 'Positive' %}
+  <div class="banner banner-high">Your latest physical check-in flagged a possible issue: keep your physician in the loop while following these habits.</div>
+  {% endif %}
+  <div class="care-grid">
+    <div class="care-col">
+      <h3>Daily basics</h3>
+      <ul>
+        <li><b>Move:</b> aim for 150 minutes of moderate activity weekly - brisk walking counts.</li>
+        <li><b>Sleep:</b> 7-9 hours; same wake-up time even on weekends.</li>
+        <li><b>Hydrate &amp; eat colour:</b> water first; half the plate vegetables and fruit.</li>
+        <li><b>Screen breaks:</b> every 45 minutes, stand and look 6 metres away for 20 seconds.</li>
+      </ul>
+    </div>
+    <div class="care-col">
+      <h3>Watch &amp; prevent</h3>
+      <ul>
+        <li><b>Blood pressure:</b> check monthly if it has ever read High.</li>
+        <li><b>No smoking, less alcohol:</b> single biggest wins for heart and lungs.</li>
+        <li><b>Regular screenings:</b> annual BP, sugar and cholesterol after age 30.</li>
+        <li><b>Log symptoms early:</b> run a Life check-in when something feels off - early patterns are easier to treat.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="tech-links">
+    <a class="cta-dark btn-gap" href="{{ url_for('dash') }}">Run a Check-in</a>
+    <a class="cta-outline cta-dark-outline" href="{{ url_for('appointment') }}">Talk to a Doctor</a>
+  </div>
+</section>
+
+{% set page = 'selfcare' %}
+{% include '_footnav.html' %}
+{% endblock %}

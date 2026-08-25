@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<section class="auth-wrap">
+  <div class="auth-card">
+    <h1>LIFE</h1>
+    <p class="auth-sub">Sign in to sync your check-ins and bookings with your profile.</p>
+
+    <div class="auth-tabs">
+      <button type="button" id="tabSignin" class="active-tab">Sign In</button>
+      <button type="button" id="tabSignup">Create Account</button>
+    </div>
+
+    <p id="authMsg" class="auth-msg"></p>
+
+    <div id="formSignin">
+      <input class="text-input auth-input" type="email" id="si_email" placeholder="Email">
+      <input class="text-input auth-input" type="password" id="si_pass" placeholder="Password">
+      <button class="btn-primary auth-btn" id="doSignin">SIGN IN</button>
+    </div>
+
+    <div id="formSignup" class="hidden">
+      <input class="text-input auth-input" type="text" id="su_name" placeholder="Full name">
+      <input class="text-input auth-input" type="email" id="su_email" placeholder="Email">
+      <input class="text-input auth-input" type="password" id="su_pass" placeholder="Password (min 6 chars)">
+      <button class="btn-primary auth-btn" id="doSignup">CREATE ACCOUNT</button>
+    </div>
+
+    <div class="auth-divider"><span>or</span></div>
+    <button class="btn-secondary auth-btn" id="doGoogle">CONTINUE WITH GOOGLE</button>
+    <p class="small center">Your health records stay on this device; only your profile is stored in Firebase.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}<script>window.PAGE = "login";</script>{% endblock %}

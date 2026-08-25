@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}History{% endblock %}
+{% block content %}
+<section class="assess-page">
+<h1 class="page-title">History</h1>
+<p class="subtitle">Your last {{ items|length }} assessment{{ '' if items|length == 1 else 's' }}, newest first.</p>
+
+{% if items %}
+<div class="table-wrap">
+  <table class="metrics-table">
+    <thead>
+      <tr><th>When</th><th>Physical</th><th>Risk</th><th>Mental</th><th>Alert</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for it in items %}
+      <tr>
+        <td>{{ it.timestamp[:16].replace('T', ' ') }}</td>
+        <td>{{ it.phys }}</td>
+        <td>{{ '—' if it.risk is none else (it.risk * 100)|round(0)|int ~ '%' }}</td>
+        <td>{{ it.mental }}</td>
+        <td>{% if it.alert %}<span class="alert-chip chip-{{ it.alert|lower }}">{{ it.alert }}</span>{% else %}—{% endif %}</td>
+        <td><a class="row-link" href="{{ url_for('result', rid=it.id) }}">view &rarr;</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="banner banner-moderate">Nothing here yet. Complete a check-in from your dashboard.</div>
+{% endif %}
+
+<a class="cta-dark btn-gap" href="{{ url_for('dash') }}">BACK TO DASHBOARD</a>
+</section>
+
+{% set page = 'history' %}
+{% include '_footnav.html' %}
+{% endblock %}

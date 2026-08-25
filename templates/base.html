@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Life{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="brand">LIFE</div>
+    <div class="nav-links">
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('dash') }}">Dashboard</a>
+      <a href="{{ url_for('reports') }}">Reports</a>
+      <a href="{{ url_for('appointment') }}">Appointment</a>
+    </div>
+    <div class="auth-area">
+      <a data-auth="guest" href="{{ url_for('login') }}" class="auth-link">Sign in</a>
+      <span data-auth="user" style="display:none" class="auth-user">
+        <span class="auth-dot"></span><span data-user-name>...</span>
+        <button class="auth-logout" data-logout>Logout</button>
+      </span>
+    </div>
+  </nav>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  {% block scripts %}{% endblock %}
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  <script src="{{ url_for('static', filename='firebase-auth.js') }}?v=3"></script>
+</body>
+</html>

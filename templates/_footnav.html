@@ -1,0 +1,7 @@
+<nav class="footnav">
+  <a href="{{ url_for('index') }}" class="{{ 'active' if page == 'home' else '' }}">&#8962; Home</a>
+  <a href="{{ url_for('dash') }}" class="{{ 'active' if page in ('dash','checkin') else '' }}">&#10003; Checkin</a>
+  <a href="{{ url_for('history') }}" class="{{ 'active' if page == 'history' else '' }}">&#8635; History</a>
+  <a href="{{ url_for('selfcare') }}" class="{{ 'active' if page == 'selfcare' else '' }}">&#9825; Selfcare</a>
+  <a href="{{ url_for('myinfo') }}" class="{{ 'active' if page == 'myinfo' else '' }}">&#9679; MyInfo</a>
+</nav>

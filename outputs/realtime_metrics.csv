@@ -1,0 +1,7 @@
+dataset,model,accuracy,loss,precision_macro
+physical_health,Linear Regression,1.0,0.6767,1.0
+mental_health,Linear Regression,0.0,2.3697,0.0
+physical_health,Random Forest,0.0,0.7679,0.0
+mental_health,Random Forest,0.0,5.5215,0.0
+physical_health,XGBoost,1.0,0.0392,1.0
+mental_health,XGBoost,0.0,20.7233,0.0

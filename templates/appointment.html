@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Appointment{% endblock %}
+{% block content %}
+<section class="assess-page">
+<h1 class="page-title">Appointment</h1>
+<p class="subtitle">Life reads your latest report and suggests whether you should meet, call or video-consult a physician.</p>
+
+<div class="banner banner-{{ (alert or 'low')|lower }}">
+  <div class="alert-level">{{ alert or 'LOW' }} CRITICALITY</div>
+  <div class="alert-msg">{{ urgency_text }}</div>
+</div>
+
+<h2 class="page-subtitle">Suggested for your report</h2>
+<div class="info-grid">
+  {% for d in doctors %}
+  <div class="result-card">
+    <div class="rc-title">{{ d.specialty }}</div>
+    <div class="rc-text">{{ d.name }}</div>
+    <p class="small">{{ d.focus }} &middot; available {{ d.days }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+<h2 class="page-subtitle">Book an appointment</h2>
+<form id="bookForm" onsubmit="return false;">
+  <section class="q-section">
+    <div class="question">
+      <div class="q-label">Patient name</div>
+      <input class="text-input" type="text" id="b_name" value="{{ name }}" autocomplete="off">
+    </div>
+    <div class="question">
+      <div class="q-label">Doctor</div>
+      <select class="text-input" id="b_doctor">
+        {% for d in all_doctors %}
+        <option value="{{ d.name }}" data-specialty="{{ d.specialty }}">{{ d.name }} - {{ d.specialty }} ({{ d.days }})</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="question">
+      <div class="q-label">Consultation mode</div>
+      <div class="choice-row" data-group="mode" data-multi="false">
+        {% for m in ['In-person visit', 'Video call', 'Phone call'] %}
+        <div class="checkbox-wrapper">
+          <input type="radio" name="q_mode" id="q_mode_{{ loop.index }}" value="{{ m }}">
+          <label for="q_mode_{{ loop.index }}" class="label">
+            <svg width="34" height="34" viewBox="0 0 95 95">
+              <circle cx="47.5" cy="47.5" r="26" stroke="#111111" fill="none" stroke-width="5"></circle>
+              <g transform="translate(0,-952.36222)">
+                <path d="m 56,963 c -102,122 6,9 7,9 17,-5 -66,69 -38,52 122,-77 -7,14 18,4 29,-11 45,-43 23,-4"
+                      stroke="#111111" stroke-width="3" fill="none" class="path1"></path>
+              </g>
+            </svg>
+            <span>{{ m }}</span>
+          </label>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="question form-row">
+      <div><div class="q-label">Date</div><input class="text-input" type="date" id="b_date"></div>
+      <div><div class="q-label">Time</div><input class="text-input" type="time" id="b_time"></div>
+    </div>
+    <div class="question">
+      <div class="q-label">Contact (phone / email)</div>
+      <input class="text-input" type="text" id="b_contact" placeholder="+91 ... or you@mail.com">
+    </div>
+  </section>
+
+  <div class="submit-area">
+    <button type="button" class="btn-primary" id="bookBtn">CONFIRM BOOKING</button>
+  </div>
+  <div id="bookResult" class="banner banner-low hidden"></div>
+</form>
+
+{% if bookings %}
+<h2 class="page-subtitle">Your bookings</h2>
+<div class="table-wrap">
+  <table class="metrics-table">
+    <thead><tr><th>Booked on</th><th>Patient</th><th>Doctor</th><th>When</th><th>Mode</th></tr></thead>
+    <tbody>
+      {% for b in bookings %}
+      <tr><td>{{ b.created[:16].replace('T',' ') }}</td><td>{{ b.name }}</td><td>{{ b.doctor }}</td><td>{{ b.date }} {{ b.time }}</td><td>{{ b.mode }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+</section>
+
+{% set page = 'checkin' %}
+{% include '_footnav.html' %}
+{% endblock %}
+
+{% block scripts %}<script>window.PAGE = "appointment"; window.PATIENT_ALERT = "{{ alert or '' }}"; window.PATIENT_ISSUE = "{{ reason }}";</script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>{% endblock %}
