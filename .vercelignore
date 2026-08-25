@@ -1,5 +1,6 @@
 # Large model files (>50MB Vercel limit)
 outputs/mental_health_rf.pkl
+outputs/physical_health_rf.pkl
 
 # Training artifacts not needed at runtime
 outputs/*.png
